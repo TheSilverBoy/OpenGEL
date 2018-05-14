@@ -20,19 +20,19 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{289ADDB1-6C39-47DC-ABC8-C768B95A2CCB}</ProjectGuid>
-    <RootNamespace>OpenGEL</RootNamespace>
+    <ProjectGuid>{C6ACEC84-F19B-4192-A5A5-5BD9E5A88FF7}</ProjectGuid>
+    <RootNamespace>OpenGELTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -69,34 +69,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)bin\$(PlatformShortName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin\intermediate\$(ProjectName)\$(PlatformShortName)\$(Configuration)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)bin\$(PlatformShortName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)bin\intermediate\$(ProjectName)\$(PlatformShortName)\$(Configuration)\</IntDir>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)/lib/GLFW/include;$(SolutionDir)$(ProjectName)/include;$(SolutionDir)$(ProjectName)/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;GEL_IMPL;GLFW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;GEL_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(ProjectName)/lib/GLFW/</AdditionalLibraryDirectories>
-    </Lib>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(ProjectName)/lib/GLFW</AdditionalLibraryDirectories>
+      <SubSystem>NotSet</SubSystem>
+      <AdditionalLibraryDirectories>C:\dev\repos\OpenGEL\OpenGEL\lib\GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,23 +100,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <CompileAs>Default</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)/lib/GLFW/include;$(SolutionDir)$(ProjectName)/include;$(SolutionDir)$(ProjectName)/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_MBCS;GEL_IMPL;GLFW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MBCS;GEL_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(ProjectName)/lib/GLFW</AdditionalLibraryDirectories>
+      <SubSystem>NotSet</SubSystem>
+      <AdditionalLibraryDirectories>C:\dev\repos\OpenGEL\OpenGEL\lib\GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
     </Link>
-    <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(ProjectName)/lib/GLFW/</AdditionalLibraryDirectories>
-    </Lib>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -148,18 +125,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\GEL\gel.h" />
-    <ClInclude Include="include\glad\glad.h" />
-    <ClInclude Include="include\KHR\khrplatform.h" />
-    <ClInclude Include="src\common\logging\log.h" />
-    <ClInclude Include="src\gel_internal.h" />
-    <ClInclude Include="src\window\common\window_common.h" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\common\logging\log.cpp" />
-    <ClCompile Include="src\gel.c" />
-    <ClCompile Include="src\glad.c" />
-    <ClCompile Include="src\window\common\window_common.c" />
+    <ProjectReference Include="..\OpenGEL\OpenGEL.vcxproj">
+      <Project>{289addb1-6c39-47dc-abc8-c768b95a2ccb}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
